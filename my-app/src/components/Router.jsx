@@ -7,6 +7,7 @@ import StartPage from "../pages/Start/StartPage";
 export default function Router() {
   return (
     <BrowserRouter>
+      <div>PUBP.</div>
       <nav>
         <NavLink className={({ isActive }) => "nav-link" + (isActive ? " click" : "")} to='/'>
           Start
