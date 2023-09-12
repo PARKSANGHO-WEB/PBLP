@@ -1,5 +1,5 @@
 import "./DotRing.css";
-import useMousePosition from "../../src/hooks/useMousePosition";
+import useMousePosition from "../../hooks/useMousePosition";
 
 const DotRing = () => {
 	// 1.

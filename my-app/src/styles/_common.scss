@@ -1,0 +1,36 @@
+@font-face {
+  font-family: "Libre-B";
+  font-weight: 50;
+  src: url("../assets/fonts/LibreBaskerville-Bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Libre-R";
+  src: url("../assets/fonts/LibreBaskerville-Regular.woff") format("woff");
+}
+
+$color-black: #000;
+
+
+a{
+  text-decoration: none;
+}
+
+body{
+  background-color: #fffcf3;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  .header{
+    margin: 20px;
+    .logo{
+      font-size: 60px;
+      font-weight: 900;
+      font-family: 'Libre-B';
+      color: $color-black;
+      letter-spacing: -0.05em;
+      line-height: 1;
+    }
+  }
+}
