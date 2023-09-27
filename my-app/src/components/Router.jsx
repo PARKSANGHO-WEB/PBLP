@@ -1,6 +1,7 @@
 import React from "react";
 
-import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+import {BrowserRouter, Routes, Route, NavLink} from "react-router-dom";
+
 import AboutPage from "../pages/About/AboutPage";
 import ContactPage from "../pages/Contact/ContactPage";
 import StartPage from "../pages/Start/StartPage";
@@ -9,12 +10,12 @@ export default function Router() {
   return (
     <BrowserRouter>
       <div className="header">
-        <div className="logo_Box">
+        <div className="logo_box">
           <a className="logo" href="/">
-            PUBP.
+            <span>PBLP.</span>
           </a>
         </div>
-        <nav>
+        {<nav className="menu">
           <NavLink className={({ isActive }) => "nav-link" + (isActive ? " click" : "")} to='/'>
             Start
           </NavLink>
@@ -24,14 +25,16 @@ export default function Router() {
           <NavLink className={({ isActive }) => "nav-link" + (isActive ? " click" : "")} to='/contact'>
             Contact
           </NavLink>
-        </nav>
+        </nav>}
 
       </div >
+      <div className="main_container">
         <Routes>
           <Route exact path='/' element={<StartPage />} />
           <Route path='/about' element={<AboutPage />} />
           <Route path='/contact' element={<ContactPage />} />
         </Routes>
+      </div>
       </BrowserRouter>
   );
 }

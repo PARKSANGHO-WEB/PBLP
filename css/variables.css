@@ -7,25 +7,183 @@
   font-family: "Libre-R";
   src: url("../assets/fonts/LibreBaskerville-Regular.woff") format("woff");
 }
+@font-face {
+  font-family: "hopang-B";
+  font-weight: 50;
+  src: url("../assets/fonts/SDSamliphopangcheBasic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "hopang-B";
+  font-weight: 50;
+  src: url("../assets/fonts/SDSamliphopangcheBasic.eot") format("eot");
+}
+@font-face {
+  font-family: "hopang-O";
+  src: url("../assets/fonts/SDSamliphopangcheOutline.woff2") format("woff");
+}
+@font-face {
+  font-family: "hopang-O";
+  src: url("../assets/fonts/SDSamliphopangcheOutline.eot") format("eot");
+}
+/* play with vars for different effets */
+:root {
+  --color-cursor: 220, 90, 90;
+  --cursor-outline-shade: 0.3;
+  --cursor-size: 10px;
+  --cursor-outline-size: 12px;
+}
+
 a {
   text-decoration: none;
 }
 
-body {
-  background-color: #fffcf3;
+html {
+  cursor: none;
+  overflow-x: hidden;
+}
+html * {
+  cursor: none;
+}
+html body {
+  background-color: #fffbf1;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  cursor: none;
 }
-body .header {
-  margin: 20px;
+html body .header {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
 }
-body .header .logo {
-  font-size: 60px;
-  font-weight: 900;
+html body .header .logo_box {
+  position: relative;
+}
+html body .header .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  margin: 0px 40px;
+  height: 100%;
+  z-index: 999;
   font-family: "Libre-B";
+  font-size: 40px;
   color: #000;
-  letter-spacing: -0.05em;
-  line-height: 1;
+  font-weight: 300;
+  letter-spacing: -1px;
+}
+html body .header .menu {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+  margin-right: 40px;
+}
+html body .header .menu a {
+  color: #000;
+  font-size: 20px;
+  font-weight: 400;
+  font-family: "Libre-R";
+  padding: 10px 20px;
+  align-items: center;
+  justify-content: center;
+}
+html body .header .menu a.click {
+  border-bottom: 1px solid #fff;
+}
+html body .main_container .main_bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+html body .main_container .main_bg .opacity-box {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 11;
+}
+html body .main_container .main_bg img {
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: -50%;
+  left: 0%;
+  z-index: -1;
+}
+
+#cursor-dot,
+#cursor-dot-outline {
+  z-index: 999;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out;
+}
+
+#cursor-dot {
+  width: var(--cursor-size);
+  height: var(--cursor-size);
+  background-color: rgba(var(--color-cursor), 1);
+}
+
+#cursor-dot-outline {
+  width: var(--cursor-outline-size);
+  height: var(--cursor-outline-size);
+  background-color: rgba(var(--color-cursor), var(--cursor-outline-shade));
+}
+
+body {
+  background-color: white;
+  margin: 8%;
+  padding: 0;
+}
+
+#firstCircle {
+  background-color: yellow;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  border: 2px solid blue;
+  margin-bottom: 1%;
+}
+
+p {
+  text-align: center;
+  font-weight: bold;
+}
+
+#secondCircle {
+  background-color: blue;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  border: 2px solid yellow;
+  margin-bottom: 10%;
+}
+
+#thirdCircle {
+  background-color: black;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  border: 2px solid yellow;
+  margin-bottom: 50%;
+}
+
+.bigBox {
+  height: 5000px;
 }
