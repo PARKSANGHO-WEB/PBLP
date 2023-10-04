@@ -5,6 +5,12 @@ import gsap from "gsap";
 import {useRef, useEffect} from "react";
 import React from "react";
 
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
+
+
+
 function Cursor() {
   const cursorDotOutline = React.useRef();
   const cursorDot = React.useRef();
@@ -165,30 +171,91 @@ function Cursor() {
 
 
 function App() {
-  const circleRef = useRef(null);
+  const number = useRef(null);
+
   useEffect(() => {
-    gsap.to("#thirdCircle", {
-      x: 100,
-      duration: 5,
+    gsap.to("#h1", {
       scrollTrigger: {
-        trigger: "#thirdCircle",
-        markers: true,
-        start: "top center",
-        end: "bottom 80px",
-        scrub: true
-      }
+        trigger: "#header",
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
+      yPercent: 10,
+      scale: 3,
+      opacity: 0,
     });
+    // Section 1 H2
+    gsap.from("#h2", {
+      scrollTrigger: {
+        trigger: "#h2",
+        start: "top bottom",
+        end: "top 400px",
+        // start: "top",
+        // end: 'bottom',
+        scrub: 1,
+        // toggleActions: "play complete none reset"
+      },
+      xPercent: -100,
+      opacity: 0,
+    });
+    // Execution heading
+    gsap.from("#h3", {
+      scrollTrigger: {
+        trigger: "#h3",
+        start: "top bottom+=100px",
+        // scrub: true
+        toggleActions: "play complete none reset",
+      },
+      xPercent: 100,
+      opacity: 0.5,
+      duration: 1 
+    });
+    // Custom trigger
+    ScrollTrigger.create({
+      trigger: "#h3",
+      start: "top bottom+=-200px", // 200px after the top passes the bottom of the viewport
+      endTrigger: '#section2',
+      end: "bottom top",
+      onUpdate: (self) => {
+        const progress = Math.max(2, Math.ceil(self.progress * 100)); //No lower than 2.
+        number.current.innerHTML = progress;
+        // console.log(
+        //   "progress:",
+        //   self.progress.toFixed(3),
+        //   "direction:",
+        //   self.direction,
+        //   "velocity",
+        //   self.getVelocity()
+        // );
+      },
+    });
+  
+    ScrollTrigger.refresh()
+
+    
   }, []);
+
 
   return (
     <div className='App'>
       <Router />
 
       <Cursor />
-      <div className="bigBox"></div>
-      <div id="firstCircle"></div>
-      <div id="secondCircle"></div>
-      <div ref={circleRef} id="thirdCircle"></div>
+      
+    <main>
+      <div className="height100">
+        <h1 id="h1">Execution Is Everything</h1>
+      </div>
+      <div className="height100">
+        <h2 id="h2">The idea is step 1.</h2>
+      </div>
+      <section id="section2" className="height100">
+        <h2 id="h3">
+          Execution is steps <span ref={number}>2</span>.
+        </h2>
+      </section>
+    </main>
     </div>
   );
 }
