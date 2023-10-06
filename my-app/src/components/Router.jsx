@@ -1,40 +1,43 @@
 import React from "react";
 
+import {useEffect} from "react";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import gsap from "gsap";
 import {BrowserRouter, Routes, Route, NavLink} from "react-router-dom";
 
-import AboutPage from "../pages/About/AboutPage";
-import ContactPage from "../pages/Contact/ContactPage";
-import StartPage from "../pages/Start/StartPage";
-
 export default function Router() {
+
+  useEffect(() => {
+    // Execution heading
+    const showAnim = gsap.from("#header", {
+      yPercent: -100,
+      paused: true,
+      duration: 0.2
+    }).progress(1);
+    // Custom trigger
+    ScrollTrigger.create({
+      start: "top top",
+      end: 99999,
+      onUpdate: (self) => {
+        self.direction === -1 ? showAnim.play() : showAnim.reverse()
+      }
+    });
+
+    ScrollTrigger.refresh()
+
+
+  }, []);
+
   return (
     <BrowserRouter>
-      <div className="header">
+      <div className="header" id="header">
         <div className="logo_box">
           <a className="logo" href="/">
             <span>PBLP.</span>
           </a>
         </div>
-        {<nav className="menu">
-          <NavLink className={({ isActive }) => "nav-link" + (isActive ? " click" : "")} to='/'>
-            Start
-          </NavLink>
-          <NavLink className={({ isActive }) => "nav-link" + (isActive ? " click" : "")} to='/about'>
-            About
-          </NavLink>
-          <NavLink className={({ isActive }) => "nav-link" + (isActive ? " click" : "")} to='/contact'>
-            Contact
-          </NavLink>
-        </nav>}
 
       </div >
-      <div className="main_container">
-        <Routes>
-          <Route exact path='/' element={<StartPage />} />
-          <Route path='/about' element={<AboutPage />} />
-          <Route path='/contact' element={<ContactPage />} />
-        </Routes>
-      </div>
       </BrowserRouter>
   );
 }

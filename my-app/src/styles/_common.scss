@@ -32,32 +32,29 @@
   src: url("../assets/fonts/SDSamliphopangcheOutline.eot") format("eot");
 }
 
-/* play with vars for different effets */
-:root {
-  --color-cursor: 220, 90, 90;
-  --cursor-outline-shade: 0.3;
-  --cursor-size: 10px;
-  --cursor-outline-size: 12px;
-}
-
+@import url(https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css);
+@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap);
 
 a{
   text-decoration: none;
 }
 
+
 html{
-  cursor: none;
   overflow-x: hidden;
-  *{
-    cursor: none;
-  }
+  scroll-behavior: smooth;
   body{
+    scroll-behavior: smooth;
+    font-family: Montserrat,Pretendard,-apple-system,Apple SD Gothic Neo,맑은 고딕,Malgun Gothic,sans-serif;
     background-color: #fffbf1;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    cursor: none;
+    background: url('../assets/images/main_bg.jpg') no-repeat;
+    background-size: cover;
+    background-position: bottom center;
+    background-attachment: fixed;
     .header{
       position: fixed;
       left: 0px;
@@ -66,6 +63,7 @@ html{
       height: 80px;
       display: flex;
       flex-direction: row;
+      z-index: 99;
       .logo_box{
         position: relative;
       }
@@ -77,10 +75,9 @@ html{
         margin: 0px 40px;
         height: 100%;
         z-index: 999;
-        font-family: 'Libre-B';
-        font-size: 40px;
-        color: #000;
-        font-weight: 300;
+        font-size: 60px;
+        color: #fff;
+        font-weight: 900;
         letter-spacing: -1px;
       }
       .menu{
@@ -91,10 +88,9 @@ html{
         width: 100%;
         margin-right: 40px;
         a{
-          color: #000;
+          color: #fff;
           font-size: 20px;
-          font-weight: 400;
-          font-family: 'Libre-R';
+          font-weight: 500;
           padding: 10px 20px;
           align-items: center;
           justify-content: center;
@@ -104,55 +100,69 @@ html{
         }
       }
     }
-    .main_container{
-      .main_bg{
-        position: absolute;
+    main{
+      .section01{
         width: 100%;
-        height: 100%;
-        z-index: -1;
-        overflow: hidden;
-        .opacity-box{
+        display: flex;
+        height: 100vh;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        .black-box{
+          position: absolute;
+          background-color: #000;
+          opacity: .5;
           width: 100%;
           height: 100%;
-          position: absolute;
-          background-color: rgba($color: #000000, $alpha: 0.8);
-          z-index: 11;
         }
-        img{
-          display: block;
-          width: 100%;
+        .main-box{
+          display: flex;
+          flex-direction: column;
           position: absolute;
-          top: -50%;
-          left: 0%;
-          z-index: -1;
+          z-index: 2;
+          h1 {
+            font-size: 100px;
+            font-weight: 900;
+            line-height: 85px;
+            margin: 0;
+            color: #fff;
+          }
+
+          .main-sub {
+            font-size: 30px;
+            font-weight: 700;
+            margin-left: 5px;
+            margin-top: 10px;
+            color: #fff;
+          }
         }
+          .scrollDown{
+            position: absolute;
+            animation-name: bounce;
+            animation-duration: 0.5s;
+            animation-direction: alternate;
+            animation-timing-function: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+            animation-iteration-count: infinite;
+            font-size: 12px;
+            color: #fff;
+            bottom: 60px;
+          }
+      }
+      .section02{
+        background-color: #fffbf1;
+        min-height: 100vh;
+        overflow: hidden;
       }
     }
   }
 }
 
-#cursor-dot,
-#cursor-dot-outline {
-  z-index: 999;
-  pointer-events: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  border-radius: 50%;
-  opacity: 0;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out;
-}
+@keyframes bounce {
+  from {
+    transform: translateY(0) scale(1);
+  }
 
-#cursor-dot {
-  width: var(--cursor-size);
-  height: var(--cursor-size);
-  background-color: rgba(var(--color-cursor), 1);
+  to {
+    transform: translateY(20px) scale(1, 0.7);
+  }
 }
-
-#cursor-dot-outline {
-  width: var(--cursor-outline-size);
-  height: var(--cursor-outline-size);
-  background-color: rgba(var(--color-cursor), var(--cursor-outline-shade));
-}
-

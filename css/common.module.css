@@ -34,10 +34,8 @@ a {
 
 html {
   overflow-x: hidden;
-  scroll-behavior: smooth;
 }
 html body {
-  scroll-behavior: smooth;
   font-family: Montserrat, Pretendard, -apple-system, Apple SD Gothic Neo, 맑은 고딕, Malgun Gothic, sans-serif;
   background-color: #fffbf1;
   -webkit-user-select: none;
@@ -105,7 +103,7 @@ html body main .section01 {
 html body main .section01 .black-box {
   position: absolute;
   background-color: #000;
-  opacity: 0.5;
+  opacity: 0.3;
   width: 100%;
   height: 100%;
 }
@@ -116,41 +114,21 @@ html body main .section01 .main-box {
   z-index: 2;
 }
 html body main .section01 .main-box h1 {
-  font-size: 100px;
+  font-size: 120px;
   font-weight: 900;
-  line-height: 85px;
+  line-height: 105px;
   margin: 0;
   color: #fff;
 }
-html body main .section01 .main-box .main-sub {
-  font-size: 30px;
+html body main .section01 .main-box span {
+  font-size: 40px;
   font-weight: 700;
   margin-left: 5px;
   margin-top: 10px;
   color: #fff;
 }
-html body main .section01 .scrollDown {
-  position: absolute;
-  animation-name: bounce;
-  animation-duration: 0.5s;
-  animation-direction: alternate;
-  animation-timing-function: cubic-bezier(0.95, 0.05, 0.795, 0.035);
-  animation-iteration-count: infinite;
-  font-size: 12px;
-  color: #fff;
-  bottom: 60px;
-}
-html body main .section02 {
-  background-color: #fffbf1;
-  min-height: 100vh;
-  overflow: hidden;
-}
 
-@keyframes bounce {
-  from {
-    transform: translateY(0) scale(1);
-  }
-  to {
-    transform: translateY(20px) scale(1, 0.7);
-  }
+#h1 {
+  position: fixed;
+  top: 50%;
 }
