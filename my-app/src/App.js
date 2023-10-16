@@ -27,11 +27,9 @@ function App() {
     gsap.from("#h2", {
       scrollTrigger: {
         trigger: "#h2",
-        start: "top bottom",
-        end: "top 400px",
-        // start: "top",
-        // end: 'bottom',
-        scrub: 1,
+        start: "top",
+        end: 'bottom',
+        scrub: true,
         // toggleActions: "play complete none reset"
       },
       xPercent: -100,
